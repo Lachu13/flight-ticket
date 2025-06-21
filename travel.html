@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Flight Ticket Booking</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+      
+        body {
+            margin: 0;
+            font-family:Footlight MT;
+            background-size:cover;
+            background-position:center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            height: 100vh;
+            background-image: url(fly.jpg);
+        }
+        
+        .flight {
+            background-image: linear-gradient(to right, rgba(255, 192, 203, 0.678), rgba(0, 0, 255, 0.192));
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+            font-family: 10px;
+            margin-bottom: 50px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 15px  5px;
+        }
+
+        select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid floralwhite;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+    
+        button {
+            font-family: serif;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background-image: linear-gradient(to right,  rgba(0, 0, 255, 0.192),rgba(255, 192, 203, 0.678));
+            box-shadow: inset 0 2px 6px gray;
+            border-radius: 8px;
+            font-size: 16px;;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color:cadetblue;
+            transform: scale(1.03);
+        }
+        button i {
+            margin-right: 12px;
+            }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+        }
+        .note{
+            width: 35%;
+            margin-left: 160px;
+            margin-bottom: 150px;
+            line-height: 1.9;
+            /* opacity: 0;
+            animation: fadeIn 2s forwards;  */
+       }
+        p{
+            font-family: Segoe Script;
+            font-weight: bolder;
+            font-size: 25px;
+            color:cornsilk;
+        }
+        .note .magic{
+            color:yellow;
+        }
+        .bounce-in {
+                 animation: bounceIn 1.2s infinite;
+                }
+
+        @keyframes bounceIn {
+        0% {
+             transform: scale(1.00); 
+             }
+        60% { 
+            transform: scale(1.05);
+        }
+        100% { 
+            transform: scale(1);
+         }
+        }
+        
+          body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.123); /*Sends the overlay behind other content z-index: 1 → Front z-index: 0 → Normal z-index: -1 → Behind */
+            z-index:-1;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div class="flight">
+        <h2>FLIGHT TICKET BOOKING</h2>
+
+        <label>Destination</label>
+        <select id="destination" onchange="checkDestination()">
+            <option value="NewYork" selected>New York</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Maldives">Maldives</option>
+        </select>
+
+        <label>Date</label>
+        <input type="date" id="date">
+
+        <label>Class</label>
+        <select id="flightclass" onchange="checkClass()">
+            <option value="Business" selected>Business</option>
+            <option value="Premium">Premium</option>
+            <option value="First">First</option>
+        </select>
+
+        <button onclick="travel()"> <i class="fa-solid fa-plane-departure"></i>BOOK NOW </button>
+    </div>
+<div class="note">
+        <p  class="bounce-in"><span class="magic">MAGICAL </span>TRAVEL...!<br>The journey of a thousand miles begins with a single flight ticket.<br><span class="magic">  ENJOY YOUR JOURNEY...!</span></p>
+    
+</div>
+    <script>
+       function checkDestination() {
+    const destination = document.getElementById("destination").value;
+    if (destination !== "NewYork") {
+        alert("Only New York Flight is Available.");
+    }
+}
+
+function checkClass() {
+    const fclass = document.getElementById("flightclass").value;
+    if (fclass !== "Business") {
+        alert("Only Business class is Available.");
+    }
+}
+
+        function travel() {
+                const destination = document.getElementById("destination").value;
+                const date = document.getElementById("date").value;
+                const fclass = document.getElementById("flightclass").value;
+
+                if (destination !== "NewYork") {
+                    alert("Only New York Flight is Available.");
+                    return;
+                }
+
+                if (date === "") {
+                    alert("Please select a date.");
+                    return;
+                }
+
+                if (fclass !== "Business") {
+                    alert("Only Business class is Available.");
+                    return;
+                }
+
+                alert("Ticket Booked Successfully!");
+            }
+
+    </script>
+</body>
+</html>
